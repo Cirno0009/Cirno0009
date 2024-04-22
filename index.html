@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Amortización</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(to bottom, #3498db, #ffffff); /* Fondo con gradiente azul a blanco */
+            color: black; /* Texto en color negro */
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            text-align: center;
+        }
+
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        label, input, select, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2ecc71; /* Verde */
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #27ae60; /* Verde más oscuro */
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid black; /* Cambiado a negro */
+        }
+
+        th {
+            background-color: #2980b9; /* Azul más oscuro */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Calculadora de Amortización</h1>
+        <form id="amortizacionForm">
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" required>
+            <br>
+            <label for="plazo">Plazo (meses):</label>
+            <input type="number" id="plazo" required>
+            <br>
+            <label for="tasa">Tasa de interés (%):</label>
+            <input type="number" id="tasa" required>
+            <br>
+            <label for="tipoAmortizacion">Tipo de Amortización:</label>
+            <select id="tipoAmortizacion">
+                <option value="ingles">Inglés</option>
+                <option value="aleman">Alemán</option>
+                <option value="frances">Francés</option>
+                <option value="flat">FLAT</option>
+            </select>
+            <br>
+            <button type="button" onclick="calcularAmortizacion()">Calcular</button>
+            <button type="button" onclick="exportarPDF()">Exportar a PDF</button>
+        </form>
+        <div id="resultado"></div>
+        <canvas id="graficoAmortizacion" width="800" height="400"></canvas> <!-- El canvas para el gráfico -->
+    </div>
+
+    <!-- Biblioteca jsPDF para generar PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <!-- Archivo JavaScript -->
+    <script src="amortizacion.js"></script>
+</body>
+</html>
