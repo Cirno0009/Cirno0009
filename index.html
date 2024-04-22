@@ -64,6 +64,12 @@
             background-color: #2980b9; /* Azul más oscuro */
             color: white;
         }
+
+        canvas {
+            background-color: white; /* Color de fondo blanco para el gráfico */
+            border-radius: 10px; /* Borde redondeado para el gráfico */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para el gráfico */
+        }
     </style>
 </head>
 <body>
@@ -88,15 +94,12 @@
             </select>
             <br>
             <button type="button" onclick="calcularAmortizacion()">Calcular</button>
-            <button type="button" onclick="exportarPDF()">Exportar a PDF</button>
         </form>
         <div id="resultado"></div>
-        <canvas id="graficoAmortizacion" width="800" height="400"></canvas> <!-- El canvas para el gráfico -->
+        <canvas id="graficoAmortizacion"></canvas> <!-- Canvas para el gráfico -->
     </div>
 
-    <!-- Biblioteca jsPDF para generar PDFs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
-    <!-- Archivo JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <script src="amortizacion.js"></script>
 </body>
 </html>
