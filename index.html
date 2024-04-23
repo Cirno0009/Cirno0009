@@ -11,9 +11,10 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            background: linear-gradient(to bottom, #3498db, #ffffff); /* Fondo con gradiente azul a blanco */
+            background: linear-gradient(to top, #3498db, #ffffff); /* Fondo con gradiente azul a blanco */
             color: black; /* Texto en color negro */
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+
         }
 
         #container {
@@ -75,6 +76,12 @@
 <body>
     <div id="container">
         <h1>Calculadora de Amortización</h1>
+        <h1>Integrantes:</h1>
+        <ul>
+            <li>Julio André Villasante García</li>
+            <li>Gianluca Tejada Castillo</li>
+            <li>Yhojan Aguilar Ccorimanya</li>
+        </ul>
         <form id="amortizacionForm">
             <label for="monto">Monto:</label>
             <input type="number" id="monto" required>
@@ -94,6 +101,7 @@
             </select>
             <br>
             <button type="button" onclick="calcularAmortizacion()">Calcular</button>
+            <button type="button" onclick="exportarExcel()">Descargar Excel</button>
         </form>
         <div id="resultado"></div>
         <canvas id="graficoAmortizacion"></canvas> <!-- Canvas para el gráfico -->
