@@ -1,113 +1,256 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Amortización</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            background: linear-gradient(to top, #3498db, #ffffff); /* Fondo con gradiente azul a blanco */
-            color: black; /* Texto en color negro */
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-
-        }
-
-        #container {
-            text-align: center;
-        }
-
-        form {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        label, input, select, button {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #2ecc71; /* Verde */
-            border: none;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #27ae60; /* Verde más oscuro */
-        }
-
-        table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 8px;
-            border-bottom: 1px solid black; /* Cambiado a negro */
-        }
-
-        th {
-            background-color: #2980b9; /* Azul más oscuro */
-            color: white;
-        }
-
-        canvas {
-            background-color: white; /* Color de fondo blanco para el gráfico */
-            border-radius: 10px; /* Borde redondeado para el gráfico */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra para el gráfico */
-        }
-    </style>
+    <title>Calculadora de Sistemas Amortización</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <div id="container">
-        <h1>Calculadora de Amortización</h1>
-        <h1>Integrantes:</h1>
-        <ul>
-            <li>Julio André Villasante García</li>
-            <li>Gianluca Tejada Castillo</li>
-            <li>Yhojan Aguilar Ccorimanya</li>
-        </ul>
-        <form id="amortizacionForm">
-            <label for="monto">Monto:</label>
-            <input type="number" id="monto" required>
-            <br>
-            <label for="plazo">Plazo (meses):</label>
-            <input type="number" id="plazo" required>
-            <br>
-            <label for="tasa">Tasa de interés (%):</label>
-            <input type="number" id="tasa" required>
-            <br>
-            <label for="tipoAmortizacion">Tipo de Amortización:</label>
-            <select id="tipoAmortizacion">
-                <option value="ingles">Inglés</option>
-                <option value="aleman">Alemán</option>
-                <option value="frances">Francés</option>
-                <option value="flat">FLAT</option>
-            </select>
-            <br>
-            <button type="button" onclick="calcularAmortizacion()">Calcular</button>
-            <button type="button" onclick="exportarExcel()">Descargar Excel</button>
-        </form>
-        <div id="resultado"></div>
-        <canvas id="graficoAmortizacion"></canvas> <!-- Canvas para el gráfico -->
+<div class="container">
+    <div class="row">
+        <img src="logo.png" alt="Imagen 1" width="200px" height="140px">
+        <div class="column">
+            <div class="title"><h2>UNIVERSIDAD ANDINA DEL CUSCO</h2></div>
+            <div class="title"><h2>FACULTAD DE INGENIERIA Y ARQUITECTURA</h2></div>
+            <div class="title"><h2>ESCUELA PROFESIONAL DE INGENIERIA DE SISTEMAS</h2></div>
+        </div>
+        <img src="logo1.png" alt="Imagen 2" width="200px">
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <script src="amortizacion.js"></script>
+    <h1>Calculadora de Sistemas de Amortización</h1>
+
+    <div class="form-group">
+        <h2>Facultad de Ingenieria y Arquitectura</h2>
+    </div>
+    <div class="amortization-formulario">
+        <form id="amortization-form">
+            <label for="montoPrestamo">Monto de préstamo</label>
+            <input type="number" id="montoPrestamo" class="input" placeholder="S/.">
+            <label for="plazo">Plazo</label>
+            <input type="number" id="plazo" class="input" placeholder="Ingrese plazo">
+            <select id="periodicidad">
+                <option value="1" selected>años</option>
+                <option value="2">semestres</option>
+                <option value="3">cuatrimestres</option>
+                <option value="4">trimestres</option>
+                <option value="6">bimestres</option>
+                <option value="12">meses</option>
+                <option value="24">quincenas</option>
+                <option value="360">días</option>
+            </select>
+            <label for="interes">Tasa de Interés (%)</label>
+            <input type="number" id="interes" class="input" placeholder="%">
+            <select id="periodicidadInteres">
+                <option value="1" selected>anual</option>
+                <option value="2">semestral</option>
+                <option value="3">cuatrimestral</option>
+                <option value="4">trimestral</option>
+                <option value="6">bimestral</option>
+                <option value="12">mensual</option>
+                <option value="quincenal">quincenal</option>
+                <option value="diario">diario</option>
+            </select>
+            <label for="sistemaAmortizacion">Elija el sistema:</label>
+            <select id="sistemaAmortizacion">
+                <option value="frances" selected>Francés</option>
+                <option value="aleman">Alemán</option>
+                <option value="ingles">Inglés</option>
+                <option value="flat">Flat</option>
+            </select>
+            <button type="submit">Calcular</button>
+        </form>
+    </div>
+
+    <div id="results">
+    </div>
+
+    <script>
+        document.getElementById('amortization-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            // Obtener los valores de los campos
+            const loanAmount = parseFloat(document.getElementById("montoPrestamo").value);
+            const periods = parseFloat(document.getElementById("plazo").value);
+            var interestRate = parseFloat(document.getElementById("interes").value);
+            const periodicidad = document.getElementById("periodicidad").value;
+            const periodicidadInteres = document.getElementById("periodicidadInteres").value;
+            const sistemaAmortizacion = document.getElementById("sistemaAmortizacion").value;
+
+            const resultsElement= document.getElementById('results');
+            resultsElement.innerHTML = '';
+
+            function calcularTasaInteresEfectiva(interestRate, periodicidadInteres, periodicidad) {
+                let tasaInteresEfectiva = interestRate;
+
+                tasaInteresEfectiva = (100 * (Math.pow(1 + interestRate / 100, periodicidadInteres / periodicidad) - 1)).toFixed(2);
+
+                return tasaInteresEfectiva;
+            }
+
+            // Calcular la tasa de interés efectiva
+            function cambiar() {
+                interestRate = calcularTasaInteresEfectiva(interestRate, periodicidadInteres, periodicidad)/100;
+            }
+
+            cambiar();
+
+            function AmortizationIngles() {
+                const amortizationTable = [];
+
+                const table = document.createElement('table');
+                const headerRow = table.insertRow(0);
+                headerRow.innerHTML = '<th>PERIODO</th><th>PAGO</th><th>INTERES</th><th>AMORTIZACIÓN</th><th>SALDO</th>';
+
+                let capitalPending = loanAmount;
+                for (let i = 1; i <= periods; i++) {
+                    const interestPayment = capitalPending * interestRate;
+                    let monthlyPayment = 0;
+                    let amortization = 0;
+
+                    if (i === periods) {
+                        // Última cuota: la mensualidad incluye el capital y los intereses.
+                        monthlyPayment = capitalPending + interestPayment;
+                        amortization = capitalPending;
+                        capitalPending = 0
+                    }else{
+                        // Cuotas anteriores: la mensualidad es solo el interés.
+                        monthlyPayment = interestPayment;
+                    }
+
+                    const row = table.insertRow(i);
+                    row.innerHTML = `<td>${i}</td><td>$${monthlyPayment.toFixed(2)}</td><td>$${interestPayment.toFixed(2)}</td><td>$${amortization.toFixed(2)}</td><td>$${capitalPending.toFixed(2)}</td>`;
+
+                    amortizationTable.push({
+                        periodo: i,
+                        mensualidadRenta: monthlyPayment,
+                        interes: interestPayment,
+                        amortizacion: amortization,
+                        saldo: capitalPending
+                    });
+                }
+
+                resultsElement.appendChild(table);
+                return amortizationTable;
+            }
+
+            function AmortizationFrances() {
+                // Cálculo del pago mensual
+                const monthlyPayment = (loanAmount * interestRate) / (1 - ((1 + interestRate) ** -periods));
+                const amortizationTable = [];
+
+                // Crear una tabla HTML para mostrar la amortización
+                const table = document.createElement('table');
+                const headerRow = table.insertRow(0);
+                headerRow.innerHTML = '<th>Periodo</th><th>Pago</th><th>Amort.Cap</th><th>Interes</th><th>Cap.Pend</th>';
+
+                // Inicializar el saldo pendiente en el período 0 con los valores proporcionados.
+                let capitalPending = loanAmount;
+                const row0 = table.insertRow(1);
+                row0.innerHTML = '<td>0</td><td>$0.00</td><td>$0.00</td><td>$0.00</td><td>$' + capitalPending.toFixed(2) + '</td>';
+
+                amortizationTable.push({
+                    periodo: 0,
+                    pago: 0.00,
+                    amortizacionCapital: 0.00,
+                    interes: 0.00,
+                    capitalPendiente: capitalPending
+                });
+
+                for (let i = 1; i <= periods; i++) {
+                    // Calcular el pago de intereses
+                    const interestPayment = capitalPending * interestRate;
+                    // Calcular la amortización del capital
+                    const capitalAmortization = monthlyPayment - interestPayment;
+                    capitalPending -= capitalAmortization;
+
+                    // Crear una fila para cada período y mostrar los detalles
+                    const row = table.insertRow(i + 1);
+                    row.innerHTML = `<td>${i}</td><td>$${monthlyPayment.toFixed(2)}</td><td>$${capitalAmortization.toFixed(2)}</td><td>$${interestPayment.toFixed(2)}</td><td>$${capitalPending.toFixed(2)}</td>`;
+
+                    // Almacenar los datos en la tabla de amortización
+                    amortizationTable.push({
+                        periodo: i,
+                        pago: monthlyPayment,
+                        amortizacionCapital: capitalAmortization,
+                        interes: interestPayment,
+                        capitalPendiente: capitalPending
+                    });
+                }
+
+                // Agregar la tabla de amortización al elemento de resultados
+                resultsElement.appendChild(table);
+                return amortizationTable;
+            }
+            function AmortizationAleman() {
+                const amortizationTable = [];
+
+                const table = document.createElement('table');
+                const headerRow = table.insertRow(0);
+                headerRow.innerHTML = '<th>PERIODO</th><th>PAGO</th><th>INTERES</th><th>AMORTIZACIÓN</th><th>SALDO</th>';
+
+                let capitalPending = loanAmount;
+                const amortization = loanAmount / periods;
+                for (let i = 1; i <= periods; i++) {
+                    const interestPayment = capitalPending * interestRate;
+                    const monthlyPayment = amortization + interestPayment;
+                    capitalPending -= amortization;
+
+                    const row = table.insertRow(i);
+                    row.innerHTML = `<td>${i}</td><td>$${monthlyPayment.toFixed(2)}</td><td>$${interestPayment.toFixed(2)}</td><td>$${amortization.toFixed(2)}</td><td>$${capitalPending.toFixed(2)}</td>`;
+
+                    amortizationTable.push({
+                        periodo: i,
+                        mensualidadRenta: monthlyPayment,
+                        interes: interestPayment,
+                        amortizacion: amortization,
+                        saldo: capitalPending
+                    });
+                }
+
+                resultsElement.appendChild(table);
+                return amortizationTable;
+            }
+            function Amortizationflat() {
+                const amortizationTable = [];
+
+                const table = document.createElement('table');
+                const headerRow = table.insertRow(0);
+                headerRow.innerHTML = '<th>PERIODO</th><th>PAGO</th><th>INTERES</th><th>AMORTIZACIÓN</th><th>SALDO</th>';
+
+                const interestPayment = (loanAmount * interestRate) ;
+                const amortization = loanAmount / periods;
+                const monthlyPayment = interestPayment + amortization;
+
+                let capitalPending = loanAmount;
+                for (let i = 1; i <= periods; i++) {
+                    capitalPending -= amortization;
+
+                    const row = table.insertRow(i);
+                    row.innerHTML = `<td>${i}</td><td>$${monthlyPayment.toFixed(2)}</td><td>$${interestPayment.toFixed(2)}</td><td>$${amortization.toFixed(2)}</td><td>$${capitalPending.toFixed(2)}</td>`;
+
+                    amortizationTable.push({
+                        periodo: i,
+                        mensualidadRenta: monthlyPayment,
+                        interes: interestPayment,
+                        amortizacion: amortization,
+                        saldo: capitalPending
+                    });
+                }
+
+                resultsElement.appendChild(table);
+                return amortizationTable;
+            }
+
+            if (sistemaAmortizacion === "frances") {
+                AmortizationFrances();
+            } else if (sistemaAmortizacion === "ingles") {
+                AmortizationIngles();
+            }else if (sistemaAmortizacion === "aleman") {
+                AmortizationAleman();
+            }else if (sistemaAmortizacion === "flat") {
+                Amortizationflat();
+            }
+        });
+
+    </script>
 </body>
 </html>
