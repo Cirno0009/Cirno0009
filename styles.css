@@ -1,7 +1,6 @@
-
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: linear-gradient(to bottom, #007bff, #ffffff); /* Blue to white gradient */
     margin: 0;
     padding: 0;
 }
@@ -10,6 +9,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 .row {
@@ -27,15 +27,18 @@ body {
 /* Estilos para los títulos */
 .title {
     margin: 5px 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 h1 {
     font-size: 24px;
     font-weight: bold;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 h2 {
     font-size: 18px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 /* Estilos para el formulario */
@@ -48,10 +51,12 @@ h2 {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 label {
     font-weight: bold;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 .input {
@@ -60,6 +65,7 @@ label {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 select {
@@ -68,6 +74,7 @@ select {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 button {
@@ -77,6 +84,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 button:hover {
@@ -92,6 +100,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Added font-family */
 }
 
 th, td {
