@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DIRSEU</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            width: 300px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .login-container form {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container form input {
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .login-container form button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #004080;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+        }
+        .login-container form button:hover {
+            background-color: #003366;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form action="http://localhost/ProyectoU33/inicio/" method="get">
+        <input type="text" name="username" placeholder="Nombre de usuario" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <br>
+        <button type="submit">Ingresar</button>
+        <button type="submit">Usar Passkey</button>
+    </form>
+</div>
+
+</body>
+</html>
